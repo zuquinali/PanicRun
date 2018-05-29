@@ -8,14 +8,26 @@ public class run : MonoBehaviour {
     public int _displacement = 1;
     public Camera _camera;
 
+    private int _now;
+    private int _count;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        this._now = System.DateTime.Now.Millisecond;
+        this._count = 100;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        moveCharacter();
+        //TODO: Refazer essa conta
+        int milliseconds = System.DateTime.Now.Millisecond;
+
+        if ( (milliseconds - this._now) >= this._count )
+        {
+            moveCharacter();
+
+            this._now = milliseconds;
+        }
     }
 
     void moveCharacter()
